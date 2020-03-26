@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { deleteItems } from '../actions/index'
+import SweetAlert from 'sweetalert-react'
 
 const Item = (props) => {
-    console.log("debug: Item -> props", props)
+
+    const [visibleAlert, setVisibleAlert] = useState(false)
+
+    const handleVisibleAlert = (visibleAlert) => {
+        setVisibleAlert(visibleAlert)
+        if (visibleAlert == false) {
+            props.deleteItems(props.item)
+        }
+    }
+
 
     let classNameLabel = "";
     let nameLabel = "";
@@ -21,9 +31,17 @@ const Item = (props) => {
             nameLabel = 'Low';
             break;
     }
+
     return (
         <>
-
+            <div>
+                <SweetAlert
+                    show={visibleAlert}
+                    title="Xoa"
+                    text="Ban co muon xoa khong?"
+                    onConfirm={() => handleVisibleAlert(false)}
+                />
+            </div>
             <tr>
                 <td className="text-center">
                     {props.index}
@@ -36,7 +54,7 @@ const Item = (props) => {
                 </td>
                 <td>
                     <button type="button" className="btn btn-warning btn-sm" >Edit</button>
-                    <button type="button" className="btn btn-danger btn-sm" onClick={() => props.deleteItems(props.item)}> >Delete</button>
+                    <button type="button" className="btn btn-danger btn-sm" onClick={() => handleVisibleAlert(true)}> >Delete</button>
                 </td>
             </tr>
 
