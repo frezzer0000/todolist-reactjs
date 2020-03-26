@@ -1,11 +1,11 @@
 import React from 'react';
 import Item from '../components/Item';
 import _ from 'lodash'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const ListItem = (props) => {
-console.log("debug: ListItem -> props", props)
-    
+    console.log("debug: ListItem -> props", props)
+
     return (
         <div className="panel panel-success">
             <div className="panel-heading">List Item</div>
@@ -20,7 +20,7 @@ console.log("debug: ListItem -> props", props)
                 </thead>
                 <tbody>
                     {_.map(props.listItem, (item, index) => {
-                        return <Item item={item} index={index} handleDelete={()=>props.handleDelete(item)} />
+                        return <Item item={item} index={index} />
                     })}
                 </tbody>
             </table>

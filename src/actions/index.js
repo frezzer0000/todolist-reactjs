@@ -6,4 +6,10 @@ import * as typesActions from './types'
 //     }
 // }
 
+export const deleteItems = (item) => {
+    return {
+        type: typesActions.DELETE_ITEM,
+        payload: item
+    }
+}
 
