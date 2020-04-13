@@ -1,17 +1,6 @@
-import {combineReducers} from 'redux';
-import * as actionTypes from '../actions/types'
-import Items from '../mockData/Item';
-const initialState = {
-    Items
-}
+import { combineReducers } from 'redux';
+import handleItem from './handleReducer';
 
-const listItem = (state =initialState, action ) => {
-    return state.Items
-    }
-
-
-const rootReducers = combineReducers ({
-    item: listItem
-})
-
-export default rootReducers;
+export default combineReducers({
+    handleItem: handleItem,
+});

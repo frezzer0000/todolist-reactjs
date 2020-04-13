@@ -7,13 +7,15 @@ import ListItem from './components/ListItem';
 import Items from './mockData/Item';
 import SweetAlert from 'sweetalert-react';
 import _ from 'lodash';
+import ItemEdit from './components/ItemEdit';
 
 function App() {
+  console.log("debug: App -> App")
   const [showAlert, setShowAlert] = useState(false)
   const [itemIdCallBack, setItemCallBack] = useState("")
   const [items, setItems] = useState(Items)
 
-  console.log("debug: handleDelete -> item", itemIdCallBack)
+  // console.log("debug: handleDelete -> item", itemIdCallBack)
   const handleDelete = (item) => {
     setShowAlert(true)
     setItemCallBack(item.id)
