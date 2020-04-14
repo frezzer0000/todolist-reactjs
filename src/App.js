@@ -12,6 +12,7 @@ import ItemEdit from './components/ItemEdit';
 function App() {
   console.log("debug: App -> App")
   const [showAlert, setShowAlert] = useState(false)
+  const [showForm, setShowForm] = useState(false)
   const [itemIdCallBack, setItemCallBack] = useState("")
   const [items, setItems] = useState(Items)
 
@@ -27,16 +28,19 @@ function App() {
       return i.id !== itemIdCallBack
     }))
   }
+  const showFormHandle =() =>{
+    setShowForm(!showForm)
+  }
 
   return (
     <div className="container">
       <div>
         <SweetAlert
           show={showAlert}
-          title="Xoa"
-          text="Ban co muon xoa khong?"
+          title="Delete Mission"
+          text="Do you want to delete ?"
           onConfirm={() => handleDelete2()}
-        />
+        />;
       </div>
       <Title />
       <div className="row">
@@ -47,14 +51,14 @@ function App() {
           <Sort />
         </div>
         <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-          <button type="button" className="btn btn-info btn-block marginB10">Add Item</button>
+          <button type="button" className="btn btn-info btn-block marginB10" onClick={()=>showFormHandle()}>Add Item</button>
         </div>
       </div>
-      <div className="row marginB10">
+     { showForm ? <div className="row marginB10">
         <div className="col-md-offset-7 col-md-5">
-          <Form />
+          <Form showForm={showFormHandle}/>
         </div>
-      </div>
+      </div> : null}
       <ListItem handleDelete={handleDelete} />
     </div>
   );

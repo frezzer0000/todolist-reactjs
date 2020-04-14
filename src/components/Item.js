@@ -17,7 +17,7 @@ const Item = (props) => {
         levelEdit: 0,
         Label : '',
     })
-    console.log("debug: Item -> editData", props.item)
+    // console.log("debug: Item -> editData", props.item)
 
     let classNameLabel = "";
     let nameLabel = "";
@@ -36,8 +36,8 @@ const Item = (props) => {
             break;
     }
     const handleAlert = () => {
-        props.deleteItem(props.item.id)
         setShowAlert(false)
+        props.deleteItem(props.item.id)
     }
     const handleEditItem = () => {
         setLoadingComponent(false)

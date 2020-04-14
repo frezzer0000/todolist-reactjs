@@ -17,6 +17,13 @@ export const editItem = (payload) => {
         payload,
     }
 }
+export const addItem = (payload) => {
+    // console.log("debug: addItem -> payload", payload)
+    return {
+        type: typesActions.ADD_ITEM,
+        payload,
+    }
+}
 
 
 

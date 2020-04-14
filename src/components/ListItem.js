@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Item from '../components/Item';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import ItemEdit from './ItemEdit';
+import Form from '../components/Form'
 
 // call action
 
@@ -45,6 +45,7 @@ const ListItem = (props) => {
                         return <Item item={item} index={index} handleTem={handleTem} />
                     })}
                 </tbody>
+                {/* <Form/> */}
             </table>
         </div>
     )

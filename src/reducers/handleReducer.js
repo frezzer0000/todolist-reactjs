@@ -1,6 +1,8 @@
 import * as actionTypes from '../actions/types'
 import Items from '../mockData/Item';
 import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
+
 const initialState = {
     Items
 }
@@ -13,7 +15,6 @@ const handleItem = (state = initialState, action) => {
                 ...state.Items
             }
         case actionTypes.DELETE_ITEM:
-            console.log(state)
             return {
                 ...state,
                 Items: state.Items.filter((i) => i.id !== action.payload)
@@ -28,13 +29,26 @@ const handleItem = (state = initialState, action) => {
                         return {
                             ...i,
                             name: action.payload.nameEdit,
-                            level : action.payload.levelEdit
-                        }     
+                            level: action.payload.levelEdit
+                        }
                     };
                     return i;
                 })
             }
-        // console.log("debug: handleItem -> Items", Items)
+        case actionTypes.ADD_ITEM:
+            console.log("debug: handleItem -> Items", Items)
+            const newPayload = {
+                id: uuidv4(),
+                name : action.payload.nameAdd,
+                level: action.payload.levelAdd
+            }
+            return {
+                ...state,
+                Items: [
+                    ...state.Items,
+                    newPayload
+                ]
+            }
         default:
             return state;
     }
